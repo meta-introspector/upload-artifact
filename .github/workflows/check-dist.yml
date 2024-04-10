@@ -22,10 +22,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: meta-introspector/checkout@v4
+      - uses: meta-introspector/checkout@main
 
       - name: Setup Node 20
-        uses: meta-introspector/setup-node@v4
+        uses: meta-introspector/setup-node@main
         with:
           node-version: 20.x
           cache: 'npm'
@@ -46,7 +46,7 @@ jobs:
         id: diff
 
       # If index.js was different than expected, upload the expected version as an artifact
-      - uses: meta-introspector/upload-artifact@v4
+      - uses: meta-introspector/upload-artifact@main
         if: ${{ failure() && steps.diff.conclusion == 'failure' }}
         with:
           name: dist
